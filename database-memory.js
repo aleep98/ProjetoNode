@@ -3,13 +3,13 @@ export class DatabaseMemory {
     #videos = new Map()
 
 list(){
-    return this.#videos.values()
+    return Array.from(this.#videos.values())
 }
 
 create(video)
 {
-    const videoId = randomUUID
-
+    const videoId = randomUUID    
+    console.log(video)
     this.#videos.set(videoId, video)
 }
 
