@@ -19,8 +19,12 @@ server.post('/videos', (request, reply) => {
 })
 
 
-server.get('/videos', () => {
-    const videos = database.list()
+server.get('/videos', (request) => {
+    const search = request.query.search
+
+    console.log(search)
+
+    const videos = database.list(search)
     console.log(videos)
     return videos
 })

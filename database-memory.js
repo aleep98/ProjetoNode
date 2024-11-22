@@ -2,7 +2,7 @@ import { randomUUID } from "node:crypto"
 export class DatabaseMemory {
     #videos = new Map()
 
-list(){
+list(search){
     return Array.from(this.#videos.entries()).map((videoArray) => {
         const id = videoArray[0]
         const data = videoArray[1]
@@ -11,6 +11,13 @@ list(){
             id,
             ...data,
         }
+    })
+    .filter(video =>{
+        if (seach){
+            return video.title.includes(search)
+        }
+
+        return true
     })
 }
 
