@@ -13,10 +13,24 @@ import { fastify } from "fastify";
 
 const server = fastify()
 
-server.get('/', () =>{
+server.post('/videos', () => {
     return 'Hello, World'
+})
+
+server.get('/videos', () => {
+    return 'Hello, Alexandre'
+})
+
+server.put('/videos/:id', () => {
+    return 'Hello, Alexandre'
+}
+)
+
+server.delete('/videos/:id', () => {
+    return 'Hello, Alexandre'
 })
 
 server.listen({
     port: 3333,
 })
+
