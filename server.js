@@ -5,10 +5,11 @@ const server = fastify()
 
 const database = new DatabaseMemory()
 
-server.post('/videos', async (request, reply) => {
+server.post('/videos', (request, reply) => {
     const { title, description, duration} = request.body
 
-    await database.create({
+
+     database.create({
         title,
         description,
         duration
@@ -24,13 +25,26 @@ server.get('/videos', () => {
     return videos
 })
 
-server.put('/videos/:id', () => {
-    return 'Hello, Alexandre'
-}
-)
+server.put('/videos/:id', (request, reply) => {
+    const videoId = request.params.id
+    const { title, description, duration} = request.body
 
-server.delete('/videos/:id', () => {
-    return 'Hello, Alexandre'
+    database.update(videoId, {
+        title,
+        description,
+        duration,
+
+    })
+
+    return reply.status(204).send()
+})
+
+server.delete('/videos/:id', (request, reply) => {
+    const videoId = request.params.id
+
+    database.delete(videoId)
+
+    return reply.status(204).send()
 })
 
 server.listen({

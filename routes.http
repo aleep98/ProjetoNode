@@ -9,4 +9,22 @@ Content-Type: application/json
 
 ###
 
+
 GET http://localhost:3333/videos
+
+
+###
+
+
+PUT http://localhost:3333/videos/8bade91a-962b-41b3-a7ba-e6af8cfd3d12
+Content-Type: application/json
+
+{
+    "title": "video 02 atualizado",
+    "description": "descrição atualizada",
+    "duration": 200
+}
+
+###
+
+DELETE http://localhost:3333/videos/50534ff2-16e7-466c-8556-0f547a545628
